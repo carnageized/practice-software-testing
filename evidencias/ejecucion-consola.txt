@@ -1,0 +1,203 @@
+
+> practice-software-testing-examen-final-qa@1.0.0 test
+> playwright test --project=chromium
+
+
+Running 26 tests using 3 workers
+
+  ✓   2 [chromium] › playwright-tests/01-login.spec.ts:33:9 › F1 - Login y bloqueo de cuenta › TC-LOGIN-002 | EP inválida: credenciales rechazadas › Partición I1 - email registrado + contraseña incorrecta (2.1s)
+  ✓   3 [chromium] › playwright-tests/01-login.spec.ts:46:9 › F1 - Login y bloqueo de cuenta › TC-LOGIN-002 | EP inválida: credenciales rechazadas › Partición I2 - email con formato válido pero no registrado (2.5s)
+  ✓   1 [chromium] › playwright-tests/01-login.spec.ts:16:7 › F1 - Login y bloqueo de cuenta › TC-LOGIN-001 | EP válida: cliente registrado inicia sesión con credenciales correctas (2.5s)
+  ✓   4 [chromium] › playwright-tests/01-login.spec.ts:58:9 › F1 - Login y bloqueo de cuenta › TC-LOGIN-002 | EP inválida: credenciales rechazadas › Partición I3 - email con formato inválido (validación en cliente) (1.7s)
+  ✓   5 [chromium] › playwright-tests/01-login.spec.ts:72:7 › F1 - Login y bloqueo de cuenta › TC-LOGIN-003 | Transición de estados: la cuenta se bloquea tras 3 intentos fallidos consecutivos (3.7s)
+  ✓   6 [chromium] › playwright-tests/01-login.spec.ts:97:7 › F1 - Login y bloqueo de cuenta › TC-LOGIN-004 | Caja blanca (cobertura de decisión role != "admin"): el administrador nunca se bloquea (3.8s)
+  ✘   7 [chromium] › playwright-tests/02-registro.spec.ts:47:9 › F2 - Registro de usuario › TC-REG-001 | BVA longitud mínima de contraseña (mín. 8) › Valor 7 (Min-1) -> inválido: no se registra (2.9s)
+  ✓   8 [chromium] › playwright-tests/02-registro.spec.ts:72:11 › F2 - Registro de usuario › TC-REG-001 | BVA longitud mínima de contraseña (mín. 8) › Valor 8 (Min) -> válido: la cuenta se crea y redirige a login (2.8s)
+  ✓   9 [chromium] › playwright-tests/02-registro.spec.ts:72:11 › F2 - Registro de usuario › TC-REG-001 | BVA longitud mínima de contraseña (mín. 8) › Valor 9 (Min+1) -> válido: la cuenta se crea y redirige a login (2.8s)
+  ✓  10 [chromium] › playwright-tests/02-registro.spec.ts:94:11 › F2 - Registro de usuario › TC-REG-002 | BVA edad mínima 18 años (fecha de nacimiento) › Cumplió 18 ayer (límite-1 día) -> válido (3.8s)
+  ✓  12 [chromium] › playwright-tests/02-registro.spec.ts:94:11 › F2 - Registro de usuario › TC-REG-002 | BVA edad mínima 18 años (fecha de nacimiento) › Cumple 18 mañana (límite+1 día) -> inválido (2.8s)
+  ✘  11 [chromium] › playwright-tests/02-registro.spec.ts:94:11 › F2 - Registro de usuario › TC-REG-002 | BVA edad mínima 18 años (fecha de nacimiento) › Cumple 18 HOY (valor límite) -> válido (2.7s)
+  ✓  13 [chromium] › playwright-tests/02-registro.spec.ts:117:9 › F2 - Registro de usuario › TC-REG-003 | Caja blanca: decisión "after:{hoy-75 años}" del campo dob › Rama FALSE esperada: 95 años -> rechazado (2.0s)
+  ✓  15 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R1 - Transferencia con datos válidos (4.8s)
+  ✓  16 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R2 - Transferencia con nombre de banco con dígitos (5.0s)
+  ✓  17 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R3 - Contra entrega (sin datos adicionales) (4.1s)
+  ✓  18 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R4 - BNPL sin seleccionar cuotas (4.1s)
+  ✓  19 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R5 - BNPL con 6 cuotas (4.8s)
+  ✓  20 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R6 - Gift card 16 alfanum. + código 4 alfanum. (4.7s)
+  ✓  21 [chromium] › playwright-tests/03-checkout-pago.spec.ts:43:11 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R7 - Gift card con número de 15 caracteres (4.4s)
+  ✓  22 [chromium] › playwright-tests/03-checkout-pago.spec.ts:67:9 › F3 - Checkout y pago › TC-PAY-001 | Tabla de decisión: método de pago x validez de datos › R8 - Ningún método seleccionado (4.6s)
+  ✓  23 [chromium] › playwright-tests/03-checkout-pago.spec.ts:85:11 › F3 - Checkout y pago › TC-PAY-002 | BVA fecha de vencimiento de tarjeta de crédito (paso = 1 mes) › Mes anterior (límite-1) -> inválido (4.5s)
+  ✘  24 [chromium] › playwright-tests/03-checkout-pago.spec.ts:85:11 › F3 - Checkout y pago › TC-PAY-002 | BVA fecha de vencimiento de tarjeta de crédito (paso = 1 mes) › Mes actual (valor límite) -> válido (5.7s)
+  ✓  25 [chromium] › playwright-tests/03-checkout-pago.spec.ts:85:11 › F3 - Checkout y pago › TC-PAY-002 | BVA fecha de vencimiento de tarjeta de crédito (paso = 1 mes) › Mes siguiente (límite+1) -> válido (4.6s)
+  ✓  26 [chromium] › playwright-tests/03-checkout-pago.spec.ts:116:7 › F3 - Checkout y pago › TC-PAY-003 | E2E: compra completa con tarjeta de crédito genera factura y vacía el carrito (3.9s)
+  ✘  14 [chromium] › playwright-tests/02-registro.spec.ts:128:9 › F2 - Registro de usuario › TC-REG-003 | Caja blanca: decisión "after:{hoy-75 años}" del campo dob › Rama FALSE esperada: 80 años -> debe rechazarse (revela límite desplazado) (1.0m)
+
+
+  1) [chromium] › playwright-tests/02-registro.spec.ts:47:9 › F2 - Registro de usuario › TC-REG-001 | BVA longitud mínima de contraseña (mín. 8) › Valor 7 (Min-1) -> inválido: no se registra 
+
+    Error: BUG-004: el mensaje debe indicar mínimo 8 caracteres
+
+    expect(received).toContain(expected) // indexOf
+
+    Expected substring: "8 characters"
+    Received string:    "Password must be minimal 6 characters long."
+
+      63 |       // ER4: el mensaje de error debe ser coherente con la regla (8 caracteres). -> ver BUG-004
+      64 |       expect.soft(await registerPage.passwordError.innerText(), 'BUG-004: el mensaje debe indicar mínimo 8 caracteres')
+    > 65 |         .toContain('8 characters');
+         |          ^
+      66 |     });
+      67 |
+      68 |     for (const [label, password] of [
+        at /home/user/practice-software-testing/playwright-tests/02-registro.spec.ts:65:10
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--db5b7-1---inválido-no-se-registra-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--db5b7-1---inválido-no-se-registra-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/02-registro-F2---Registro--db5b7-1---inválido-no-se-registra-chromium/error-context.md
+
+    attachment #4: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--db5b7-1---inválido-no-se-registra-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/02-registro-F2---Registro--db5b7-1---inválido-no-se-registra-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  2) [chromium] › playwright-tests/02-registro.spec.ts:94:11 › F2 - Registro de usuario › TC-REG-002 | BVA edad mínima 18 años (fecha de nacimiento) › Cumple 18 HOY (valor límite) -> válido 
+
+    Error: dob=2008-11-10 debe aceptarse
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 201
+    Received: 422
+
+      100 |
+      101 |         if (c.valid) {
+    > 102 |           expect(response.status(), `dob=${c.dob()} debe aceptarse`).toBe(201);
+          |                                                                      ^
+      103 |           await expect(page).toHaveURL(/\/auth\/login$/);
+      104 |         } else {
+      105 |           expect(response.status()).toBe(422);
+        at /home/user/practice-software-testing/playwright-tests/02-registro.spec.ts:102:70
+
+    attachment #1: respuesta POST /users/register (text/plain) ─────────────────────────────────────
+    HTTP 422
+    {"dob":["Customer must be 18 years old."]}
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--909c1-8-HOY-valor-límite---válido-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--909c1-8-HOY-valor-límite---válido-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/02-registro-F2---Registro--909c1-8-HOY-valor-límite---válido-chromium/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--909c1-8-HOY-valor-límite---válido-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/02-registro-F2---Registro--909c1-8-HOY-valor-límite---válido-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  3) [chromium] › playwright-tests/02-registro.spec.ts:128:9 › F2 - Registro de usuario › TC-REG-003 | Caja blanca: decisión "after:{hoy-75 años}" del campo dob › Rama FALSE esperada: 80 años -> debe rechazarse (revela límite desplazado) 
+
+    Test timeout of 60000ms exceeded.
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator:  locator('[data-test="login-form"]').or(locator('[data-test="register-error"]'))
+    Expected: visible
+    Received: undefined
+
+
+      38 |   const body = await response.text().catch(() => '(sin cuerpo)');
+      39 |   await testInfo.attach('respuesta POST /users/register', { body: `HTTP ${response.status()}\n${body}`, contentType: 'text/plain' });
+    > 40 |   await expect(page.locator('[data-test="login-form"]').or(registerPage.registerError)).toBeVisible();
+         |                                                                                         ^
+      41 |   return response;
+      42 | }
+      43 |
+        at submitAndWaitOutcome (/home/user/practice-software-testing/playwright-tests/02-registro.spec.ts:40:89)
+        at /home/user/practice-software-testing/playwright-tests/02-registro.spec.ts:133:24
+
+    attachment #1: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--e730f-e-revela-límite-desplazado--chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: respuesta POST /users/register (text/plain) ─────────────────────────────────────
+    HTTP 201
+    (sin cuerpo)
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--e730f-e-revela-límite-desplazado--chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/02-registro-F2---Registro--e730f-e-revela-límite-desplazado--chromium/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/02-registro-F2---Registro--e730f-e-revela-límite-desplazado--chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/02-registro-F2---Registro--e730f-e-revela-límite-desplazado--chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4) [chromium] › playwright-tests/03-checkout-pago.spec.ts:85:11 › F3 - Checkout y pago › TC-PAY-002 | BVA fecha de vencimiento de tarjeta de crédito (paso = 1 mes) › Mes actual (valor límite) -> válido 
+
+    Error: BUG-003: la API debe aceptar la tarjeta con vencimiento 11/2026
+
+    expect(received).toBe(expected) // Object.is equality
+
+    Expected: 200
+    Received: 422
+
+      108 |         await test.info().attach('respuesta POST /payment/check', { body: `HTTP ${response.status()}\n${await response.text()}`, contentType: 'text/plain' });
+      109 |         // Front-end y back-end deben coincidir en la frontera: mes actual = tarjeta vigente. -> ver BUG-003
+    > 110 |         expect(response.status(), `BUG-003: la API debe aceptar la tarjeta con vencimiento ${expiry}`).toBe(200);
+          |                                                                                                        ^
+      111 |         await expect(checkout.paymentSuccess).toHaveText(PAYMENT_OK);
+      112 |       });
+      113 |     }
+        at /home/user/practice-software-testing/playwright-tests/03-checkout-pago.spec.ts:110:104
+
+    attachment #1: respuesta POST /payment/check (text/plain) ──────────────────────────────────────
+    HTTP 422
+    {"message":"The payment details.expiration date field must be a date after today.","errors":{"payment_details.expiration_date":["The payment details.expiration date field must be a date after today."]}}
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #2: screenshot (image/png) ──────────────────────────────────────────────────────────
+    test-results/03-checkout-pago-F3---Chec-15191-ctual-valor-límite---válido-chromium/test-failed-1.png
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    attachment #3: video (video/webm) ──────────────────────────────────────────────────────────────
+    test-results/03-checkout-pago-F3---Chec-15191-ctual-valor-límite---válido-chromium/video.webm
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+    Error Context: test-results/03-checkout-pago-F3---Chec-15191-ctual-valor-límite---válido-chromium/error-context.md
+
+    attachment #5: trace (application/zip) ─────────────────────────────────────────────────────────
+    test-results/03-checkout-pago-F3---Chec-15191-ctual-valor-límite---válido-chromium/trace.zip
+    Usage:
+
+        npx playwright show-trace test-results/03-checkout-pago-F3---Chec-15191-ctual-valor-límite---válido-chromium/trace.zip
+
+    ────────────────────────────────────────────────────────────────────────────────────────────────
+
+  4 failed
+    [chromium] › playwright-tests/02-registro.spec.ts:47:9 › F2 - Registro de usuario › TC-REG-001 | BVA longitud mínima de contraseña (mín. 8) › Valor 7 (Min-1) -> inválido: no se registra 
+    [chromium] › playwright-tests/02-registro.spec.ts:94:11 › F2 - Registro de usuario › TC-REG-002 | BVA edad mínima 18 años (fecha de nacimiento) › Cumple 18 HOY (valor límite) -> válido 
+    [chromium] › playwright-tests/02-registro.spec.ts:128:9 › F2 - Registro de usuario › TC-REG-003 | Caja blanca: decisión "after:{hoy-75 años}" del campo dob › Rama FALSE esperada: 80 años -> debe rechazarse (revela límite desplazado) 
+    [chromium] › playwright-tests/03-checkout-pago.spec.ts:85:11 › F3 - Checkout y pago › TC-PAY-002 | BVA fecha de vencimiento de tarjeta de crédito (paso = 1 mes) › Mes actual (valor límite) -> válido 
+  22 passed (1.2m)

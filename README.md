@@ -1,3 +1,97 @@
+# Examen Final QA – Pruebas y Calidad de Software (ECCI 2026-II)
+
+Fork de [testsmith-io/practice-software-testing](https://github.com/testsmith-io/practice-software-testing) con **Playwright** instalado
+y una suite de 10 casos de prueba sobre la aplicación **Toolshop – Sprint 5**.
+
+| Entregable | Ubicación |
+|---|---|
+| Casos automatizados (Playwright + TypeScript) | [`playwright-tests/`](playwright-tests) |
+| Matriz de casos, técnicas, ejecución, defectos, trazabilidad y métricas | [`entregables/Casos_de_Prueba_Toolshop.xlsx`](entregables/Casos_de_Prueba_Toolshop.xlsx) |
+| Informe final (las reflexiones individuales quedan para el equipo) | [`entregables/Informe_Final_Examen_QA_Toolshop.docx`](entregables/Informe_Final_Examen_QA_Toolshop.docx) |
+| Evidencias (capturas por caso, consola, CSV, reporte HTML) | [`evidencias/`](evidencias) |
+
+## Funcionalidades bajo prueba
+
+| ID | Funcionalidad | Casos |
+|---|---|---|
+| F1 | Autenticación (login) y bloqueo de cuenta | TC-LOGIN-001 … 004 |
+| F2 | Registro de usuario | TC-REG-001 … 003 |
+| F3 | Checkout: método de pago y creación de la orden | TC-PAY-001 … 003 |
+
+Técnicas: partición de equivalencia, valores límite, tabla de decisión, transición de estados (caja negra) y cobertura de decisión (caja blanca).
+
+## Requisitos
+
+- Docker Desktop (o Docker Engine + Compose v2)
+- Node.js LTS (≥ 18) y npm
+- Puertos libres: 4200 (UI), 8091 (API), 3306 (MariaDB)
+
+## 1. Levantar la aplicación
+
+```bash
+npm run app:up      # docker compose -f docker-compose.exam.yml up -d --build
+npm run app:seed    # crea y siembra la BD + limpia la caché de la API
+```
+
+La primera vez tarda unos minutos (descarga ~1,5 GB de imágenes). Comprobar que responden:
+
+- UI: http://localhost:4200
+- API: http://localhost:8091/status
+
+> `docker-compose.exam.yml` usa las imágenes publicadas de la API y la UI, pero construye localmente el servidor web (nginx),
+> porque la imagen `testsmith/practice-software-testing-web` solo existe para arm64 y no arranca en equipos x86_64 (Windows / Intel / AMD).
+> En Windows, `npm run app:seed` debe ejecutarse desde PowerShell o Git Bash con Docker Desktop iniciado.
+
+## 2. Instalar Playwright
+
+```bash
+npm install
+npx playwright install chromium     # agregar firefox webkit para todos los navegadores
+```
+
+## 3. Ejecutar las pruebas
+
+```bash
+npm test                 # suite completa en Chromium (headless)
+npm run test:headed      # viendo el navegador
+npm run test:ui          # modo UI interactivo de Playwright
+npx playwright test playwright-tests/01-login.spec.ts --project=chromium   # un solo spec
+npm run report           # abre el reporte HTML
+npm run evidencias       # copia capturas por ID de caso a evidencias/ y genera el CSV
+```
+
+Para repetir la ejecución desde un estado limpio: `npm run app:seed && npm test`.
+Variables opcionales: `BASE_URL` (por defecto http://localhost:4200) y `API_URL` (por defecto http://localhost:8091).
+
+## Resultado de la última ejecución (2026-11-10, Chromium)
+
+**26 escenarios: 22 PASS / 4 FAIL.** Los 4 FAIL son defectos reales de la aplicación (no del script) y están documentados:
+
+| Defecto | Caso | Severidad | Resumen |
+|---|---|---|---|
+| BUG-001 | TC-REG-002 | Media | Rechaza a quien cumple 18 años el mismo día (`before` en vez de `before_or_equal`) |
+| BUG-002 | TC-REG-003 | Media | No se aplica el límite de 75 años: Carbon mutable desplaza el límite a ~93 años |
+| BUG-003 | TC-PAY-002 | Media | Tarjeta que vence el mes actual: la UI la acepta, la API la rechaza y muestra "Unknown error" |
+| BUG-004 | TC-REG-001 | Baja | El mensaje dice "minimal 6 characters" cuando la regla es de 8 |
+| BUG-005 | Exploratorio | Alta | Si falla la creación de la factura, la UI no informa nada tras "Payment was successful" |
+
+Detalle completo (pasos, esperado, actual, causa en el código y evidencia) en el Excel y el informe.
+
+## Estructura de la suite
+
+```
+playwright-tests/
+├── 01-login.spec.ts          # F1
+├── 02-registro.spec.ts       # F2
+├── 03-checkout-pago.spec.ts  # F3
+├── pages/                    # Page Objects: login, registro, checkout
+└── support/test-data.ts      # usuarios semilla, emails únicos, fechas relativas, alta de usuarios por API
+```
+
+---
+
+# README original del proyecto
+
 [![Run Playwright Tests 🎭](https://github.com/testsmith-io/practice-software-testing/actions/workflows/run-tests.yml/badge.svg)](https://github.com/testsmith-io/practice-software-testing/actions/workflows/run-tests.yml) [![StackShare](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](https://stackshare.io/testsmith-io/practice-software-testing)
 
 

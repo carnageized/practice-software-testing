@@ -1,15 +1,25 @@
 {
-  "name": "practicesoftwaretesting-playwright",
+  "name": "practice-software-testing-examen-final-qa",
   "version": "1.0.0",
-  "description": "",
+  "description": "Examen final Pruebas y Calidad de Software (ECCI 2026-II) - automatización Playwright sobre Toolshop (Sprint 5)",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "app:up": "docker compose -f docker-compose.exam.yml up -d --build",
+    "app:seed": "docker exec pst-laravel-api-1 sh -c \"php artisan migrate:fresh --seed --force && php artisan cache:clear\"",
+    "app:down": "docker compose -f docker-compose.exam.yml down -v",
+    "test": "playwright test --project=chromium",
+    "test:headed": "playwright test --project=chromium --headed",
+    "test:ui": "playwright test --ui",
+    "test:all-browsers": "playwright test",
+    "report": "playwright show-report",
+    "evidencias": "node scripts/recolectar-evidencias.mjs"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@faker-js/faker": "^10.4.0",
-    "@playwright/test": "^1.53.1",
+    "@playwright/test": "^1.63.0",
     "@types/node": "^24.0.7"
   }
 }
