@@ -6,8 +6,6 @@ y una suite de 10 casos de prueba sobre la aplicación **Toolshop – Sprint 5**
 | Entregable | Ubicación |
 |---|---|
 | Casos automatizados (Playwright + TypeScript) | [`playwright-tests/`](playwright-tests) |
-| Matriz de casos, técnicas, ejecución, defectos, trazabilidad y métricas | [`entregables/Casos_de_Prueba_Toolshop.xlsx`](entregables/Casos_de_Prueba_Toolshop.xlsx) |
-| Informe final (las reflexiones individuales quedan para el equipo) | [`entregables/Informe_Final_Examen_QA_Toolshop.docx`](entregables/Informe_Final_Examen_QA_Toolshop.docx) |
 | Evidencias (capturas por caso, consola, CSV, reporte HTML) | [`evidencias/`](evidencias) |
 
 ## Funcionalidades bajo prueba
@@ -75,7 +73,7 @@ Variables opcionales: `BASE_URL` (por defecto http://localhost:4200) y `API_URL`
 | BUG-004 | TC-REG-001 | Baja | El mensaje dice "minimal 6 characters" cuando la regla es de 8 |
 | BUG-005 | Exploratorio | Alta | Si falla la creación de la factura, la UI no informa nada tras "Payment was successful" |
 
-Detalle completo (pasos, esperado, actual, causa en el código y evidencia) en el Excel y el informe.
+Detalle completo (pasos, esperado, actual, causa en el código y evidencia) en el informe final.
 
 ## Estructura de la suite
 
